@@ -13,13 +13,13 @@ mongoose.connection.once('open', () => {
     console.log('connected to database')
 })
 
-console.log('________',process.env.DBNAME_PASSWORD)
+// console.log('________',process.env.DBNAME_PASSWORD)
 
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
 }))
 
-app.listen(4000, () => {
-    console.log('now listening for requests on port 4000')
+app.listen(4001, () => {
+    console.log('now listening for requests on port 4001')
 })
