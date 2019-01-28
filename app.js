@@ -3,16 +3,15 @@ const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
 const mongoose = require('mongoose')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
 
 //allow cross-origin requests
 app.use(cors());
+// make sure to replace my db string in process.env.DB_HOST
 
-// connect to mlab database
-// make sure to replace my db string & creds with your own
-
-mongoose.connect('mongodb://fong1980:dejavu1@ds229909.mlab.com:29909/gql-ninja', { useNewUrlParser: true })
+mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true })
 mongoose.connection.once('open', () => {
     console.log('------connected to database succeed-------')
 })
